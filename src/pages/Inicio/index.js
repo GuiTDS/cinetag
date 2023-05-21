@@ -1,12 +1,25 @@
-import Rodape from "components/Rodape";
+import Banner from "components/Banner";
+import Card from "components/Card";
+import Titulo from "components/Titulo";
+import videos from "json/db.json";
+import styles from "./Inicio.module.css";
 
-const { default: Cabecalho } = require("components/Cabecalho")
+
 
 const Inicio = () => {
     return (
         <>
-            <Cabecalho />
-            <Rodape />
+            <Banner imagem="home" />
+            <Titulo>
+                <h1>Um lugar para guardar seus vídeos e filmes!</h1>
+            </Titulo>
+            <section className={styles.container} >
+                {videos.map(video => {
+                    return(
+                        <Card id={video.id} titulo={video.titulo} capa={video.capa}/>
+                    );
+                })}
+            </section>
         </>
 
     );
